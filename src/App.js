@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Form } from './components/create';
 import { Read } from './components/read';
 import { Update } from './components/update';
+import { Home } from './components/Home';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <h2 className="main-header">Crud</h2>
         <div>
           <Routes>
+            <Route path='/' element={<Home />} />
             <Route exact path='/create' element={<Form />} />
             <Route exact path='/read' element={<Read />} />
             <Route exact path='/update' element={<Update />} />
