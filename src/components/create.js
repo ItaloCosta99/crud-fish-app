@@ -53,10 +53,10 @@ export function Form() {
       <h1 sx={{ fontSize: 12 }}>Cadastrar</h1>
       <Grid container spacing={3}>
         <Grid item xs={4}>
-          <TextField autoFocus={true} fullWidth={true} label="Nome" variant="standard" value={nameValue} onChange={(e) => setNameValue(e.target.value)} />
+          <TextField autoFocus={true} fullWidth={true} label="Nome" variant="standard" value={nameValue} onChange={(e) => setNameValue(e.target.value)} required />
         </Grid>
         <Grid item xs={4}>
-          <TextField fullWidth={true} label="Nome da Empresa" variant="standard" value={businessNameValue} onChange={(e) => setBusinessNameValue(e.target.value)} />
+          <TextField fullWidth={true} label="Nome da Empresa" variant="standard" value={businessNameValue} onChange={(e) => setBusinessNameValue(e.target.value)} required />
         </Grid>
         <Grid item xs={4}>
           <FormControl fullWidth>
@@ -67,6 +67,7 @@ export function Form() {
               value={businessSizeValue}
               label="Porte"
               onChange={(e) => setBusinessSizeValue(e.target.value)}
+              required
             >
               <MenuItem value="small">Pequeno</MenuItem>
               <MenuItem value="medium">Médio</MenuItem>
@@ -75,25 +76,25 @@ export function Form() {
           </FormControl>
         </Grid>
         <Grid item xs={4}>
-          <TextField fullWidth={true} label="CPF/CNPJ" variant="standard" value={identificationValue} onChange={(e) => setIdentificationValue(e.target.value)} />
+          <TextField fullWidth={true} label="CPF/CNPJ" variant="standard" value={identificationValue} onChange={(e) => setIdentificationValue(e.target.value)} required />
         </Grid>
         <Grid item xs={4}>
-          <TextField fullWidth={true} label="E-mail" variant="standard" value={emailValue} onChange={(e) => setEmailValue(e.target.value)} />
+          <TextField fullWidth={true} label="E-mail" variant="standard" value={emailValue} onChange={(e) => setEmailValue(e.target.value)} required />
         </Grid>
         <Grid item xs={4}>
-          <TextField fullWidth={true} label="Telefone" variant="standard" value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} />
+          <TextField fullWidth={true} label="Telefone" variant="standard" value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} required />
         </Grid>
       </Grid>
       <h2 sx={{ fontStyle: 'normal' }}>Endereço</h2>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <TextField fullWidth={true} label="Logradouro" variant="standard" value={streetValue} onChange={(e) => setStreetValue(e.target.value)} />
+          <TextField fullWidth={true} label="Logradouro" variant="standard" value={streetValue} onChange={(e) => setStreetValue(e.target.value)} required />
         </Grid>
         <Grid item xs={3}>
           <TextField fullWidth={true} label="CEP" variant="standard" value={cepValue} onChange={(e) => setCepValue(e.target.value)} />
         </Grid>
         <Grid item xs={3}>
-          <TextField fullWidth={true} label="Número" variant="standard" value={numberValue} onChange={(e) => setNumberValue(e.target.value)} />
+          <TextField fullWidth={true} label="Número" variant="standard" value={numberValue} onChange={(e) => setNumberValue(e.target.value)} required />
         </Grid>
         <Grid item xs={6}>
           <FormControl fullWidth>
@@ -104,6 +105,7 @@ export function Form() {
               value={stateValue}
               label="Estado"
               onChange={(e) => setStateValue(e.target.value)}
+              required
             >
               <MenuItem value='Estado'>Exemplo</MenuItem>
             </Select>
@@ -118,6 +120,7 @@ export function Form() {
               value={cityValue}
               label="Cidade"
               onChange={(e) => setCityValue(e.target.value)}
+              required
             >
               <MenuItem value='Cidade'>Exemplo</MenuItem>
             </Select>
