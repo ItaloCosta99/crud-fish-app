@@ -91,7 +91,7 @@ export function Form() {
           <TextField fullWidth={true} label="Logradouro" variant="standard" value={streetValue} onChange={(e) => setStreetValue(e.target.value)} required />
         </Grid>
         <Grid item xs={3}>
-          <TextField fullWidth={true} label="CEP" variant="standard" value={cepValue} onChange={(e) => setCepValue(e.target.value)} />
+          <TextField fullWidth={true} label="CEP" variant="standard" value={cepValue} onChange={(e) => setCepValue(e.target.value)} required />
         </Grid>
         <Grid item xs={3}>
           <TextField fullWidth={true} label="Número" variant="standard" value={numberValue} onChange={(e) => setNumberValue(e.target.value)} required />
