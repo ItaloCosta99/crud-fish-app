@@ -1,7 +1,7 @@
 import { Button, Container, FormControl, Grid, InputLabel, MenuItem, Select, Stack, TextField } from '@mui/material'
 import axios from 'axios';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function Form() {
   const [nameValue, setNameValue] = useState('');
@@ -16,7 +16,10 @@ export function Form() {
   const [cityValue, setCityValue] = useState('');
   const [businessSizeValue, setBusinessSizeValue] = useState('');
 
-  const handleSubmit = () => {
+  let navigation = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
     axios.post(`https://61a1a2036c3b400017e69d3e.mockapi.io/clients/`, {
       nameValue,
       businessNameValue,
@@ -29,6 +32,8 @@ export function Form() {
       cepValue,
       stateValue,
       cityValue
+    }).then(() => {
+      navigation('/read', { replace: true })
     })
     setNameValue('')
     setBusinessNameValue('')
