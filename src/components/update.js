@@ -1,8 +1,8 @@
 import { Button, Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export function Form() {
+export function Update() {
   const [nameValue, setNameValue] = useState('');
   const [businessNameValue, setBusinessNameValue] = useState('');
   const [identificationValue, setIdentificationValue] = useState('');
@@ -14,9 +14,25 @@ export function Form() {
   const [stateValue, setStateValue] = useState('');
   const [cityValue, setCityValue] = useState('');
   const [businessSizeValue, setBusinessSizeValue] = useState('');
-
-  const handleSubmit = () => {
-    axios.post(`https://61a1a2036c3b400017e69d3e.mockapi.io/clients/`, {
+  const [id, setID] = useState(null);
+  
+  useEffect(() => {
+    setID(localStorage.getItem('id'))
+    setNameValue(localStorage.getItem('name'))
+    setBusinessNameValue(localStorage.getItem('businessName'))
+    setIdentificationValue(localStorage.getItem('identification'))
+    setEmailValue(localStorage.getItem('email'))
+    setPhoneValue(localStorage.getItem('phone'))
+    setBusinessSizeValue(localStorage.getItem('businessSize'))
+    setStreetValue(localStorage.getItem('street'))
+    setNumberValue(localStorage.getItem('number'))
+    setCepValue(localStorage.getItem('cep'))
+    setStateValue(localStorage.getItem('state'))
+    setCityValue(localStorage.getItem('city'))
+  }, [])
+  
+  const updateAPIData = () => {
+    axios.put(`https://61a1a2036c3b400017e69d3e.mockapi.io/clients/${id}`, {
       nameValue,
       businessNameValue,
       identificationValue,
@@ -42,40 +58,9 @@ export function Form() {
     setBusinessSizeValue('')
   }
 
-  /* const handleSumbit = (e) => {
-    e.preventDefault()
-    axios({
-      method: 'post',
-      url: 'https://61a1a2036c3b400017e69d3e.mockapi.io/clients',
-      data: {
-        name: nameValue,
-        businessName: businessValue,
-        identification: identificationValue,
-        email: emailValue,
-        phone: phoneValue,
-        businessSize: sizeValue,
-        street: streetValue,
-        number: numberValue,
-        cep: cepValue,
-        state: stateValue,
-        city: cityValue,
-      }
-    })
-    setNameValue('')
-    setBusinessValue('')
-    setIdentificationValue('')
-    setEmailValue('')
-    setPhoneValue('')
-    setStreetValue('')
-    setNumberValue('')
-    setCepValue('')
-    setStateValue('')
-    setCityValue('')
-    setSizeValue('')
-  } */
-
+  
   return (
-    <Container component="form" sx={{ border: 1, borderRadius: 4, p: 2, boxShadow: 2, width: 800 }}>
+    <Container component="form" sx={{ border: 1, borderRadius: 4, p: 2, boxShadow: 2, width: 800 }} key={id}>
       <h1 sx={{ fontSize: 12 }}>Cadastrar</h1>
       <Grid container spacing={3}>
         <Grid item xs={4}>
@@ -150,7 +135,7 @@ export function Form() {
           </FormControl>
         </Grid>
       </Grid>
-      <Button onClick={handleSubmit} type="submit" sx={{ marginTop: 2 }}>Cadastrar</Button>
+      <Button onClick={updateAPIData} type="submit" sx={{ marginTop: 2 }}>Update</Button>
     </Container>
   );
 }
